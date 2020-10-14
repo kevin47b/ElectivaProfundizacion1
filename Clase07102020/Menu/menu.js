@@ -4,13 +4,13 @@ module.exports = appWin => {
 
   let template = [
     {
-      label: 'Items',
+      label: 'Artículo',
       submenu: [
         {
           label: 'Nuevo Item',
           accelerator: 'CmdOrCtrl+O',
           click: () => {
-            appWin.send('menu-show-modal')
+            appWin.send('mostrar-show-modal')
           }
         },
         {
@@ -58,7 +58,7 @@ module.exports = appWin => {
         {
           label: 'Aprender más...',
           click: () => {
-            shell.openExternal('https://www.google.com.co/')
+            shell.openExternal('https://academiaurepublicana.org/cur5/reporte1.php')
           }
         }
       ]

@@ -12,7 +12,7 @@ let showModal = document.getElementById('show-modal'),
     search = document.getElementById('search')
 
 // Abrir modal desde el menú
-ipcRenderer.on( 'menu-show-modal', () => {
+ipcRenderer.on( 'mostrar-show-modal', () => {
   showModal.click()
 })
 

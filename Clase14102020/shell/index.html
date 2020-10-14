@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+    <title>Primer Programa</title>
+    <style>
+      html { font-family: sans-serif; background: #2B2E3B; color: #9FEAF9; }
+    </style>
+  </head>
+  <body>
+
+    <button onclick="showSite()">Lanzar Electron.js Site</button><br>
+    <button onclick="openSplash()">Abrir Splash.png</button><br>
+    <button onclick="showSplashFile()">Mostrar Splash.png</button><br>
+    <button onclick="deleteSplashFile()">Eliminar Imagen Splash.png</button><br>
+
+    <script>
+
+      const { shell } = require('electron')
+
+      const showSite = e => {
+        shell.openExternal('https://electronjs.org')
+      }
+
+      const splashPath = `${__dirname}/splash.png`
+
+      const openSplash = e => {
+        shell.openPath(splashPath)
+      }
+
+      const showSplashFile = e => {
+        shell.showItemInFolder(splashPath)
+      }
+
+      const deleteSplashFile = e => {
+        shell.moveItemToTrash(splashPath)
+      }
+
+    </script>
+  </body>
+</html>

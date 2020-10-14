@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+    <title>Oscardo!</title>
+    <style>
+      html { font-family: sans-serif; background: #2B2E3B; color: #9FEAF9; }
+    </style>
+  </head>
+  <body>
+
+    <h1>Hola Electron!</h1>
+    <p>Construir aplicaciones de escritorio multiplataforma con JavaScript, HTML y CSS</p>
+
+    <br><button onclick="makeUpper()">Hacer mayúsculas en el portapapeles</button>
+    <br><button onclick="showImage()">Mostrar imagen del portapapeles</button>
+
+    <br><img src="" id="cbImage">
+
+    <script>
+
+      const { clipboard } = require('electron')
+
+      console.log(clipboard.readText())
+
+      const showImage = e => {
+        let image = clipboard.readImage()
+        document.getElementById('cbImage').src = image.toDataURL()
+      }
+
+      const makeUpper = e => {
+        let cbText = clipboard.readText()
+        clipboard.writeText( cbText.toUpperCase() )
+      }
+
+    </script>
+  </body>
+</html>

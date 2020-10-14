@@ -8,7 +8,7 @@ const appMenu = require('./menu')
 // se cerrará automáticamente cuando el objeto de JavaScript sea basura recogida.
 let mainWindow
 
-// Escuchar para la solicitud de un nuevo artículo
+// Escuchar para la solicitud de un nuevo items o artículo
 ipcMain.on('new-item', (e, itemUrl) => {
 
   // Get new item and send back to renderer

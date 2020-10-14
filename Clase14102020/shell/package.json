@@ -1,0 +1,22 @@
+{
+  "name": "master-electron",
+  "version": "1.0.0",
+  "description": "Código del Curso de ElectronJS",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "nodemon --exec electron .",
+    "reset": "git reset --hard"
+  },
+  "repository": "https://github.com/CURepublicana/ElectivaProfundizacion1",
+  "keywords": [
+    "Electron"
+  ],
+  "author": "Oscardo",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^9.0.0",
+    "nodemon": "^2.0.0"
+  },
+  "dependencies": {}
+}

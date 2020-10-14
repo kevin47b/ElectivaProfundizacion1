@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+    <title>Oscardo!</title>
+    <style>
+      html { font-family: sans-serif; background: #2B2E3B; color: #9FEAF9; }
+    </style>
+  </head>
+  <body>
+
+    <h1>Convertir splash.png:</h1>
+
+    <button onclick="toPng()">PNG</button>
+    <button onclick="toJpg()">JPG</button>
+    <button onclick="toTag()">Show</button>
+    <br>
+    <img src="" id="preview">
+
+    <script>
+
+      const { nativeImage, ipcRenderer } = require('electron')
+      const fs = require('fs')
+
+      const splash = nativeImage.createFromPath(`${__dirname}/splash.png`)
+
+      const saveToDesktop = async ( data, ext ) => {
+
+        let desktopPath = await ipcRenderer.invoke( 'app-path' )
+        fs.writeFile( `${desktopPath}/splash.${ext}`, data, console.log )
+      }
+
+      const toTag = e => {
+
+        let size = splash.getSize()
+
+        let splashURL = splash.resize({ width: Math.round(size.width/4), height: Math.round(size.height/4) }).toDataURL()
+        document.getElementById('preview').src = splashURL
+      }
+
+      const toPng = e => {
+        let pngSplash = splash.toPNG()
+        saveToDesktop( pngSplash, 'png' )
+      }
+
+      const toJpg = e => {
+        let jpgSplash = splash.toJPEG(100)
+        saveToDesktop( jpgSplash, 'jpg' )
+      }
+
+
+    </script>
+  </body>
+</html>
